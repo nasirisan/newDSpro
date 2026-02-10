@@ -41,11 +41,11 @@ export function CompletedTasksScreen({ onNavigate }: CompletedTasksScreenProps) 
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <Button variant="outline" size="icon" onClick={() => onNavigate('dashboard')}>
+        <Button variant="outline" size="icon" onClick={() => onNavigate('dashboard')} className="hover-scale transition-smooth glass-effect">
           <ArrowLeft className="size-4" />
         </Button>
         <div className="flex-1">
-          <h1 className="text-3xl font-bold">Completed Tasks</h1>
+          <h1 className="text-3xl font-bold gradient-text">Completed Tasks</h1>
           <p className="text-muted-foreground mt-1">View all finished tasks and performance metrics</p>
         </div>
       </div>

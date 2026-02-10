@@ -33,16 +33,16 @@ export function Navbar({ currentScreen, onNavigate, onNotificationsClick }: Navb
   ];
 
   return (
-    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40">
+    <nav className="border-b glass-effect sticky top-0 z-40 shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Title */}
           <div className="flex items-center gap-3">
-            <div className="size-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+            <div className="size-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg glow-gradient">
               <ListTodo className="size-6 text-white" />
             </div>
             <div>
-              <h1 className="font-bold text-lg">Smart Task</h1>
+              <h1 className="font-bold text-lg gradient-text">Smart Task</h1>
               <p className="text-xs text-muted-foreground hidden sm:block">
                 Queue & Priority Queue Demo
               </p>
@@ -60,7 +60,7 @@ export function Navbar({ currentScreen, onNavigate, onNotificationsClick }: Navb
                   variant={isActive ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => onNavigate(item.id)}
-                  className="gap-2"
+                  className={`gap-2 transition-smooth hover-scale ${isActive ? 'animated-gradient text-white border-0 shadow-md' : ''}`}
                 >
                   <Icon className="size-4" />
                   {item.label}
@@ -75,14 +75,14 @@ export function Navbar({ currentScreen, onNavigate, onNotificationsClick }: Navb
             <Button
               variant="outline"
               size="icon"
-              className="relative"
+              className="relative transition-smooth hover-scale glass-effect border-purple-200 dark:border-purple-800"
               onClick={onNotificationsClick}
             >
               <Bell className="size-4" />
               {unreadCount > 0 && (
                 <Badge
                   variant="destructive"
-                  className="absolute -top-1 -right-1 size-5 flex items-center justify-center p-0 text-xs"
+                  className="absolute -top-1 -right-1 size-5 flex items-center justify-center p-0 text-xs animated-gradient border-0"
                 >
                   {unreadCount}
                 </Badge>
@@ -95,6 +95,7 @@ export function Navbar({ currentScreen, onNavigate, onNotificationsClick }: Navb
                 variant="outline"
                 size="icon"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="transition-smooth hover-scale glass-effect border-purple-200 dark:border-purple-800"
               >
                 {theme === 'dark' ? (
                   <Sun className="size-4" />
@@ -117,7 +118,7 @@ export function Navbar({ currentScreen, onNavigate, onNotificationsClick }: Navb
                 variant={isActive ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => onNavigate(item.id)}
-                className="gap-2 whitespace-nowrap"
+                className={`gap-2 whitespace-nowrap transition-smooth ${isActive ? 'animated-gradient text-white border-0 shadow-md' : ''}`}
               >
                 <Icon className="size-4" />
                 {item.label}

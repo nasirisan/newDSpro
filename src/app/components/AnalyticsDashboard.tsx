@@ -72,11 +72,11 @@ export function AnalyticsDashboard({ onNavigate }: AnalyticsDashboardProps) {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <Button variant="outline" size="icon" onClick={() => onNavigate('dashboard')}>
+        <Button variant="outline" size="icon" onClick={() => onNavigate('dashboard')} className="hover-scale transition-smooth glass-effect">
           <ArrowLeft className="size-4" />
         </Button>
         <div className="flex-1">
-          <h1 className="text-3xl font-bold">Analytics Dashboard</h1>
+          <h1 className="text-3xl font-bold gradient-text">Analytics Dashboard</h1>
           <p className="text-muted-foreground mt-1">Task performance metrics and insights</p>
         </div>
       </div>

@@ -45,7 +45,14 @@ export default function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <TaskProvider>
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-background relative overflow-hidden">
+          {/* Animated Background Elements */}
+          <div className="fixed inset-0 pointer-events-none overflow-hidden">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+          </div>
+
           <Navbar
             currentScreen={currentScreen}
             onNavigate={handleNavigate}

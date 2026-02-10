@@ -69,19 +69,19 @@ export function AddTaskScreen({ onNavigate }: AddTaskScreenProps) {
     <div className="max-w-3xl mx-auto space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <Button variant="outline" size="icon" onClick={() => onNavigate('dashboard')}>
+        <Button variant="outline" size="icon" onClick={() => onNavigate('dashboard')} className="hover-scale transition-smooth glass-effect">
           <ArrowLeft className="size-4" />
         </Button>
         <div>
-          <h1 className="text-3xl font-bold">Add New Task</h1>
+          <h1 className="text-3xl font-bold gradient-text">Add New Task</h1>
           <p className="text-muted-foreground mt-1">Create a new task for queue management</p>
         </div>
       </div>
 
       {/* Form */}
-      <Card>
+      <Card className="border-0 shadow-xl">
         <CardHeader>
-          <CardTitle>Task Details</CardTitle>
+          <CardTitle className="gradient-text">Task Details</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -182,9 +182,9 @@ export function AddTaskScreen({ onNavigate }: AddTaskScreenProps) {
             </div>
 
             {/* Current Selection Summary */}
-            <Card className="bg-muted/50">
+            <Card className="bg-gradient-to-br from-purple-50/50 to-blue-50/50 dark:from-purple-950/20 dark:to-blue-950/20 border-0">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-3">Task Summary</h4>
+                <h4 className="font-semibold mb-3 gradient-text">Task Summary</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Priority:</span>
@@ -212,10 +212,10 @@ export function AddTaskScreen({ onNavigate }: AddTaskScreenProps) {
 
             {/* Submit Button */}
             <div className="flex gap-3">
-              <Button type="button" variant="outline" className="flex-1" onClick={() => onNavigate('dashboard')}>
+              <Button type="button" variant="outline" className="flex-1 hover-scale transition-smooth" onClick={() => onNavigate('dashboard')}>
                 Cancel
               </Button>
-              <Button type="submit" className="flex-1">
+              <Button type="submit" className="flex-1 animated-gradient text-white border-0 hover-scale transition-smooth">
                 Add Task
               </Button>
             </div>

@@ -59,20 +59,20 @@ export function Dashboard({ onNavigate }: DashboardProps) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight">Dashboard</h1>
+          <h1 className="text-4xl font-bold tracking-tight gradient-text">Dashboard</h1>
           <p className="text-muted-foreground mt-2">
             Manage your tasks with Queue and Priority Queue data structures
           </p>
         </div>
         <div className="flex gap-3 w-full sm:w-auto">
           {totalTasks === 0 && (
-            <Button onClick={handleLoadDemoData} size="lg" variant="outline" className="gap-2 flex-1 sm:flex-initial">
+            <Button onClick={handleLoadDemoData} size="lg" variant="outline" className="gap-2 flex-1 sm:flex-initial hover-scale">
               <Download className="size-5" />
               <span className="hidden sm:inline">Load Demo Data</span>
               <span className="sm:hidden">Demo Data</span>
             </Button>
           )}
-          <Button onClick={() => onNavigate('add-task')} size="lg" className="gap-2 flex-1 sm:flex-initial">
+          <Button onClick={() => onNavigate('add-task')} size="lg" className="gap-2 flex-1 sm:flex-initial animated-gradient hover-scale border-0 text-white">
             <Plus className="size-5" />
             <span className="hidden sm:inline">Add New Task</span>
             <span className="sm:hidden">Add Task</span>
@@ -85,15 +85,17 @@ export function Dashboard({ onNavigate }: DashboardProps) {
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
-            <Card key={stat.title} className="overflow-hidden">
-              <CardContent className="p-6">
+            <Card key={stat.title} className="overflow-hidden hover-scale transition-smooth border-0 shadow-lg relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-smooth" />
+              <CardContent className="p-6 relative">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-muted-foreground mb-1">{stat.title}</p>
-                    <p className="text-3xl font-bold">{stat.value}</p>
+                    <p className="text-3xl font-bold gradient-text">{stat.value}</p>
                   </div>
-                  <div className={`p-3 rounded-lg ${stat.bgColor}`}>
-                    <Icon className={`size-6 ${stat.color}`} />
+                  <div className={`p-3 rounded-lg ${stat.bgColor} relative`}>
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-smooth" />
+                    <Icon className={`size-6 ${stat.color} relative z-10`} />
                   </div>
                 </div>
               </CardContent>
@@ -104,42 +106,51 @@ export function Dashboard({ onNavigate }: DashboardProps) {
 
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => onNavigate('queue-view')}>
-          <CardHeader>
+        <Card className="cursor-pointer hover-scale transition-smooth border-0 shadow-lg relative overflow-hidden group" onClick={() => onNavigate('queue-view')}>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
+          <CardHeader className="relative">
             <CardTitle className="flex items-center gap-2">
-              <ListTodo className="size-5" />
-              View Task Queues
+              <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+                <ListTodo className="size-5" />
+              </div>
+              <span className="gradient-text">View Task Queues</span>
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="relative">
             <p className="text-sm text-muted-foreground">
               Visualize Normal Queue (FIFO) and Priority Queue with {normalQueue.length + priorityQueue.length} pending tasks
             </p>
           </CardContent>
         </Card>
 
-        <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => onNavigate('active-task')}>
-          <CardHeader>
+        <Card className="cursor-pointer hover-scale transition-smooth border-0 shadow-lg relative overflow-hidden group" onClick={() => onNavigate('active-task')}>
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
+          <CardHeader className="relative">
             <CardTitle className="flex items-center gap-2">
-              <Clock className="size-5" />
-              Execute Tasks
+              <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-600 text-white">
+                <Clock className="size-5" />
+              </div>
+              <span className="gradient-text">Execute Tasks</span>
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="relative">
             <p className="text-sm text-muted-foreground">
               Start executing tasks from the queues and track progress
             </p>
           </CardContent>
         </Card>
 
-        <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => onNavigate('analytics')}>
-          <CardHeader>
+        <Card className="cursor-pointer hover-scale transition-smooth border-0 shadow-lg relative overflow-hidden group" onClick={() => onNavigate('analytics')}>
+          <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
+          <CardHeader className="relative">
             <CardTitle className="flex items-center gap-2">
-              <CheckCircle2 className="size-5" />
-              View Analytics
+              <div className="p-2 rounded-lg bg-gradient-to-br from-pink-500 to-blue-600 text-white">
+                <CheckCircle2 className="size-5" />
+              </div>
+              <span className="gradient-text">View Analytics</span>
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="relative">
             <p className="text-sm text-muted-foreground">
               Track performance metrics and task completion statistics
             </p>
@@ -149,30 +160,32 @@ export function Dashboard({ onNavigate }: DashboardProps) {
 
       {/* Queue Overview */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
+        <Card className="border-0 shadow-lg hover-scale transition-smooth relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500" />
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <div className="size-3 rounded-full bg-blue-500" />
+              <div className="size-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500" />
               Normal Queue (FIFO)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold mb-2">{normalQueue.length} tasks</p>
+            <p className="text-2xl font-bold gradient-text mb-2">{normalQueue.length} tasks</p>
             <p className="text-sm text-muted-foreground">
               Tasks are processed in First-In-First-Out order
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-0 shadow-lg hover-scale transition-smooth relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-pink-500" />
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <div className="size-3 rounded-full bg-red-500" />
+              <div className="size-3 rounded-full bg-gradient-to-r from-red-500 to-pink-500" />
               Priority Queue
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold mb-2">{priorityQueue.length} tasks</p>
+            <p className="text-2xl font-bold gradient-text mb-2">{priorityQueue.length} tasks</p>
             <p className="text-sm text-muted-foreground">
               Urgent tasks sorted by priority and deadline
             </p>
@@ -181,21 +194,24 @@ export function Dashboard({ onNavigate }: DashboardProps) {
       </div>
 
       {/* Presentation Guide */}
-      <Card className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 border-purple-200 dark:border-purple-900">
-        <CardHeader>
+      <Card className="border-0 shadow-xl relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-blue-500/10 to-pink-500/10" />
+        <div className="absolute top-0 left-0 right-0 h-1 animated-gradient" />
+        <CardHeader className="relative">
           <CardTitle className="flex items-center gap-2">
-            🎯 Presentation Guide
+            <span className="text-2xl">🎯</span>
+            <span className="gradient-text">Presentation Guide</span>
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3">
+        <CardContent className="space-y-3 relative">
           <p className="font-semibold text-sm">
             What to say during your presentation:
           </p>
-          <blockquote className="border-l-4 border-purple-500 pl-4 italic text-sm">
+          <blockquote className="border-l-4 border-purple-500 pl-4 italic text-sm bg-gradient-to-r from-purple-500/5 to-transparent py-3 rounded-r">
             "This system uses a <strong>Queue data structure</strong> to manage normal tasks in <strong>FIFO (First-In-First-Out) order</strong>, 
             while urgent tasks are handled using a <strong>Priority Queue</strong> to ensure time-critical execution based on priority levels and deadlines."
           </blockquote>
-          <div className="text-xs text-muted-foreground space-y-1 mt-3">
+          <div className="text-xs text-muted-foreground space-y-1 mt-3 bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-950/20 dark:to-purple-950/20 p-4 rounded-lg">
             <p>• <strong>Normal Queue:</strong> O(1) time complexity for enqueue/dequeue operations</p>
             <p>• <strong>Priority Queue:</strong> O(log n) insert, O(1) peek for highest priority task</p>
             <p>• <strong>Auto-reordering:</strong> Tasks automatically move to priority queue as deadlines approach</p>
