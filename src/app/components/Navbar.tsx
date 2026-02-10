@@ -42,7 +42,7 @@ export function Navbar({ currentScreen, onNavigate, onNotificationsClick }: Navb
               <ListTodo className="size-6 text-white" />
             </div>
             <div>
-              <h1 className="font-bold text-lg">Smart Task Manager</h1>
+              <h1 className="font-bold text-lg">Smart Task</h1>
               <p className="text-xs text-muted-foreground hidden sm:block">
                 Queue & Priority Queue Demo
               </p>

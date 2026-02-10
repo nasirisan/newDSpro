@@ -1,7 +1,7 @@
 
-  # Smart To-Do Task Management
+  # Smart Task
 
-  This is a code bundle for Smart To-Do Task Management. The original project is available at https://www.figma.com/design/E9Id5DKCWpn0EQyPdJvViT/Smart-To-Do-Task-Management.
+  This is a code bundle for Smart Task. The original project is available at https://www.figma.com/design/E9Id5DKCWpn0EQyPdJvViT/Smart-To-Do-Task-Management.
 
   ## Running the code
 
